@@ -18,15 +18,18 @@ struct ContentView: View {
             List {
                 ForEach(expenses.items) {item in
                     HStack {
-                        Text("\(item.name)")
-                        Spacer()
-                        VStack {
-                            Text("$\(item.amount)")
+                        VStack(alignment: .leading) {
+                            Text("\(item.name)")
                             Text("\(item.type)")
                                 .font(.caption)
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(item.type == "Business" ? .blue : .green)
                                 .italic()
                         }
+                        
+                        Spacer()
+                        
+                        Text("$\(item.amount)")
+
                     }
                     
                 }
